@@ -1,0 +1,39 @@
+#search-q{
+    display: inline-flex;
+    width: 90%;
+    border-radius: 2px 0 0 2px;
+}
+
+#search-form{
+    width: 100%;
+}
+
+#submit{
+    cursor: pointer;
+    width: 65px;
+    border-radius: 0 2px 2px 0 !important;
+    margin: 0 0 4px 0;
+}
+
+.container{
+    /* width: 0; */
+    display: flex;
+    visibility: hidden;
+    align-items: center;
+    justify-content: center;
+    animation: appear 4s ease-in 10s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes appear{
+    0%{
+        width: 80%;
+        /* visibility: visible; */
+        opacity: 0.01;
+    }
+    100%{
+        visibility: visible;
+        width: 80%;
+        opacity: 1;
+    }
+}
