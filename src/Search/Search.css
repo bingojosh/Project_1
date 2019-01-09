@@ -1,23 +1,25 @@
 #search-q{
-    display: inline-flex;
+    display: flex;
     width: 90%;
     border-radius: 2px 0 0 2px;
 }
 
 #search-form{
-    width: 100%;
+    display: flex;
+    flex:1;
 }
 
 #submit{
     cursor: pointer;
     width: 65px;
     border-radius: 0 2px 2px 0 !important;
-    margin: 0 0 4px 0;
+    margin: 0;
 }
 
 .container{
     /* width: 0; */
     display: flex;
+    flex:1;
     visibility: hidden;
     align-items: center;
     justify-content: center;

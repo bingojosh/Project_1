@@ -17,6 +17,10 @@
   padding: 20px;
 }
 
+.search{
+  width:75%;
+}
+
 @keyframes fade {
   0%{
     opacity: 1;

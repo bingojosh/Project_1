@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Search from "./Search.js";
+import Search from "./Search/Search.js";
 
 class App extends Component {
   render() {
@@ -21,7 +21,9 @@ class App extends Component {
           </a> */}
           <h1 className="title">MusicifyTube</h1>
         </header>
+        <div className="search">
           <Search />
+        </div>
       </div>
     );
   }
