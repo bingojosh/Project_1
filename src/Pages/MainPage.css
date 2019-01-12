@@ -1,0 +1,7 @@
+#left{
+    flex-basis: 65%
+}
+
+#right{
+    flex-basis: 35%;
+}

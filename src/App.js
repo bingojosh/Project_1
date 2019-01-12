@@ -1,30 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-import Search from "./Search.js";
+import HomePage from './Pages/HomePage'
+import MainPage from './Pages/MainPage'
+// import Search from "./Search/Search.js";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a> */}
-          <h1 className="title">MusicifyTube</h1>
-        </header>
-          <Search />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Router>
+  <div>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/main" component={MainPage} />
+    </Switch>
+  </div>
+</Router> 
+)
 
 export default App;
