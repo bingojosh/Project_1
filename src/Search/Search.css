@@ -4,7 +4,7 @@
     border-radius: 2px 0 0 2px;
 }
 
-#search-form{
+#search{
     display: flex;
     flex:1;
 }
@@ -16,7 +16,7 @@
     margin: 0;
 }
 
-.container{
+#searchContainer{
     /* width: 0; */
     display: flex;
     flex:1;
