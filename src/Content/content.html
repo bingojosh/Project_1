@@ -25,6 +25,10 @@
       height:100%;
     }
 
+    body {
+        background-color:black;
+    }
+
     .wrapper {
       min-height: 100%;
       display:flex;
@@ -34,16 +38,17 @@
     .header {
       padding:50px;
       width:90%;
-      margin: 20px auto;
-      background-color: blue;
+      margin: 0px 20px auto auto;
+      background-color: darkgray;
       color:white;
     }
 
     .form-box {
       padding:10px;
-      width:90%;
-      margin: 20px auto;
-      background-color: blue;
+      width:100%;
+      margin:  0px 20px auto auto;
+      margin-top: 0px;
+      background-color: darkgray;
       color:white;
     }
 
@@ -79,13 +84,25 @@
     }
 
     .loader {
-    display: flex;
       width: 90vw;
       height: 80vh;
     }
 
+    .loader2 {
+    display: flex;
+      width: 100%;
+      min-height: 100%;
+    }
+
     .footer {
       text-align:center;
+      width:100%;
+      background-color: darkgray;
+      color:black;
+      height: 50px;
+      padding: auto;
+      align-items: center;
+    justify-content: center;
     }
 
     @media screen and (max-width: 700px) {
@@ -99,7 +116,7 @@
 <body>
 
     <div class="wrapper">
-        <div class="my-1 form-box">
+        <div class="mb-1 form-box">
             <form>
                 <div class="form-row text-center">
                     <div class="col-7">
@@ -109,7 +126,7 @@
                         <input class="form-control" id="limit" type="number" placeholder="Limit" required />
                     </div>
                     <div class="col">
-                        <button class="btn btn-primary ml-1" id="submit" type="submit">Search</button>
+                        <button class="btn btn-dark ml-1" id="submit" type="submit">Search</button>
                     </div>
 
                 </div>
@@ -118,29 +135,30 @@
         </div>
         <div class="mainfiller"></div>
         <div class="main">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home-tab1" role="tab" aria-controls="home" aria-selected="true">Main Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="wiki-tab" data-toggle="tab" href="#wiki-tab1" role="tab" aria-controls="wiki"
-                        aria-selected="false">Wikipedia Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-                        aria-selected="false">Contact</a>
-                </li>
-            </ul>
-
+            <div class="row">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home-tab1" role="tab"
+                            aria-controls="home" aria-selected="true">Main Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="wiki-tab" data-toggle="tab" href="#wiki-tab1" role="tab" aria-controls="wiki"
+                            aria-selected="false">Wikipedia Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                            aria-selected="false">Contact</a>
+                    </li>
+                </ul>
+            </div>
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="home-tab1" role="tabpanel" aria-labelledby="nav-home-tab">
-  
                     <div class="row">
                         <div class="form-area border">
-                            <div class="card-header">
+                            <div class="card-header bg-light">
                                 Lyrics go here
                             </div>
-                            <div class="card-body">
+                            <div class="card-body bg-secondary text-white">
                                 <div id="lyricsholder" class="lyrics"></div>
                             </div>
                         </div>
@@ -173,7 +191,7 @@
         </div>
 
         <div class="footer">
-            This is a sticky footer test with flexboxes
+            Musify - Project 1 - Joshua, Dakota, Sandy, Tariq
         </div>
 
     </div>

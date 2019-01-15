@@ -32,7 +32,7 @@ $("#submit").on("click", function (event) {
             var imgurl=response1.response.hits[i].result.header_image_url;
             console.log(artist + " : " + song);
             var btns = $("<button>");
-            btns.addClass("song-button btn btn-primary m-1");
+            btns.addClass("song-button btn btn-dark m-1");
             btns.attr("title", title);
             btns.attr("songname",song);
             btns.attr("artistname",artist);
