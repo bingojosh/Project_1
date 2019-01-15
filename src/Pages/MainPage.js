@@ -6,16 +6,13 @@ import './MainPage.css';
 
 class HomePage extends React.Component{
 
-    queryCallback = (query) => (
-        query
-    )
 
     render(){    
         return (
             <div className="container d-flex flex-column align-items-start">
                 <div className="searchbar">
                     <div className="search">
-                        <Search queryCaller={this.queryCallback} />
+                        <Search />
                     </div>
                 </div>
                 <div className="body d-flex flex-row">
