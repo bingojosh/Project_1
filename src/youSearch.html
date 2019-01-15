@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <title>Youtube Video Search</title>
+</head>
+<body>
+    <header>
+        <h1 class="w100 text-center"><a href="index.html">Youtube Search</a></h1>
+    </header>
+                    
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form action="#">
+                <p><input type="text" id="search" placeholder="Type something..." autocomplete="off" class="form-control"/></p>
+                <p><input type="submit" value="Search" class="form-control btn btn-primary w100"></p>
+                </form>
+                <div id="results"></div>
+            </div>
+        </div>
+
+        <div class="item">
+                <h2>{{title}}</h2>
+                <iframe class="video w100" width="640" height="360" src="//www.youtube.com/embed/{{videoid}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+  <script src="https://unpkg.com/youtube-api-v3-search@1.2.1/dist/youtube-api-v3-search.min.js"></script> 
+  
+  <script>
+
+function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res} 
+ 
+(function() {
+    $("form").on("submit", function(e){ 
+        e.preventDefault();
+        
+        //request prep
+        //var request = gapi.client.youtube.search.list({
+        const options = {
+            q:encodeURIComponent("#search").val().replace(/%20/g, "+"),
+            part:'snippet',
+            type:'video'
+        }
+    });
+
+// execute request
+    request.execute(function(response) {
+        var results = response.result;
+        $("#results").html("");
+        $.each(results.items, function (index, item){
+            $.get("tpl/youitem.html", function(data) {
+                $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
+            });
+        });
+    });
+resetVideoHeight();
+});
+
+
+
+function resetVideoHeight() {
+    $(".video").css("height", $("#results").width() * 9/16);
+}
+
+
+searchyoutube('AIzaSyCYSgc0atEw8rCx0Y_UqRLJHIQ8yPWOcLs',options).then
+searchyouTube.load("youtube", "v3", function() {
+});
+
+
+
+  </script>
+</body>
+</html>
