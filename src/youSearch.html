@@ -26,50 +26,53 @@
 
     <div class="item">
         <h2>{{title}}</h2>
-        <iframe class="video w100" width="640" height="360" src="https://www.youtube.com/embed/lp-EO5I60KA" frameborder="0"
+        <iframe class="video w100" width="640" height="360" src="https://www.youtube.com/embed/{videoid}" frameborder="0"
             allowfullscreen></iframe>
     </div>
 
     <script src="https://unpkg.com/youtube-api-v3-search@1.2.1/dist/youtube-api-v3-search.min.js"></script>
 
     <script>
+       
+        function tplawesome(e, t) { res = e; for (var n = 0; n < t.length; n++) { res = res.replace(/\{\{(.*?)\}\}/g, function (e, r) { return t[n][r] }) } return res }
 
-        //function tplawesome(e, t) { res = e; for (var n = 0; n < t.length; n++) { res = res.replace(/\{\{(.*?)\}\}/g, function (e, r) { return t[n][r] }) } return res }
-
-        // (function () {
-        //     $("form").on("submit", function (e) {
-        //         e.preventDefault();
+         (function () {
+             $("form").on("submit", function (e) {
+                 e.preventDefault();
 
                 //request prep
-                //var request = gapi.client.youtube.search.list({
+                
                 const options = {
-                    //q: encodeURIComponent("#search").val().replace(/%20/g, "+"),
-                    q:'Ed Sheeran',
+                    q: encodeURIComponent("#search").val().replace(/%20/g, "+"),
+                    //q:'Ed Sheeran',
                     part: 'snippet',
-                    type: 'video'
+                    type: 'video',
+                    maxResults: 1,
                 }
-                searchYoutube('AIzaSyC_ytVmeO68tuqQ3Vq_wj5nq1YG7C8Eh3U', options).then(result => console.log(result));
-        //    });
-        // });
+                searchYoutube('AIzaSyC_ytVmeO68tuqQ3Vq_wj5nq1YG7C8Eh3U', options).then(result => console.log(result)); 
+                (function (response) {
+               var results = response.result;
+               $("#results").html("");
+               $.each(results.items, function (index, item) {
+                   $.get("item", function (data) {
+                       $("#results").append(tplawesome(data, [{ "title": items.snippet.title, "videoid": items.id.videoId }]));
+                   });
+               });
+           });
+            });
+         });
 
-        // // // execute request
-        //  request.execute(function (response) {
-        //      var results = response.result;
-        //      $("#results").html("");
-        //      $.each(results.items, function (index, item) {
-        //          $.get("tpl/youitem.html", function (data) {
-        //              $("#results").append(tplawesome(data, [{ "title": item.snippet.title, "videoid": item.id.videoId }]));
-        //          });
-        //      });
-        //  });
-        //  resetVideoHeight();
+         // execute request
+        //   searchYoutube.execute
+       
+          // resetVideoHeight();
 
 
 
 
-         function resetVideoHeight() {
-             $(".video").css("height", $("#results").width() * 9 / 16);
-         }
+          //function resetVideoHeight() {
+            //  $(".video").css("height", $("#results").width() * 9 / 16);
+          //}
 
 //function init() {
 //    gapi.client.setApiKey(AIzaSyC_ytVmeO68tuqQ3Vq_wj5nq1YG7C8Eh3U);
