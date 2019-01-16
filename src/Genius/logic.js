@@ -97,11 +97,16 @@ $(document).on("click", ".song-button", function () {
         // console.log(youtube);
         // youtest = 
         // $("#load").attr("src", youtube);
+        console.log(result);
         for (i = 0; i < 5; i++) {
+            
             var youtube = "https://www.youtube.com/embed/" + result.items[i].id.videoId;
+            var youtube2 = "https://www.youtube.com/watch?v=" + result.items[i].id.videoId;
+            $(`#num${i}`).append("<a href='" + youtube2+ "' target='_blank'>Song link</a>");
             console.log(youtube);
             $(`#load${i}`).attr("src", youtube);
         }
+
     });
 
     $("#song-name").val("");
