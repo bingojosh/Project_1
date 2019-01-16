@@ -4,7 +4,7 @@ var usersearch = "Light my fire";
 $(".main").hide();
 
 $("#submit").on("click", function (event) {
-    
+
     event.preventDefault();
     $("#bholder").empty();
     var usersearch = $("#song-name").val().trim();
@@ -16,32 +16,32 @@ $("#submit").on("click", function (event) {
     }).then(function (response1) {
         console.log(response1.response.hits.length);
         console.log(response1);
-        if (limit===''){
-            limit=5;
+        if (limit === '') {
+            limit = 5;
         }
-        else if (limit>=response1.response.hits.length){
-            limit=response1.response.hits.length;
+        else if (limit >= response1.response.hits.length) {
+            limit = response1.response.hits.length;
         }
         for (i = 0; i < limit; i++) {
-            
+
             var title = response1.response.hits[i].result.full_title;
             var lyrpath = response1.response.hits[i].result.path;
             var primaryartist = response1.response.hits[i].result.primary_artist.name;
             song = title.split("by")[0].trim();
             artist = title.split("by")[1].trim();
-            var imgurl=response1.response.hits[i].result.header_image_url;
+            var imgurl = response1.response.hits[i].result.header_image_url;
             console.log(artist + " : " + song);
             var btns = $("<button>");
             btns.addClass("song-button btn btn-dark m-1");
             btns.attr("title", title);
-            btns.attr("songname",song);
-            btns.attr("artistname",artist);
-            btns.attr("lyrpath",lyrpath);
+            btns.attr("songname", song);
+            btns.attr("artistname", artist);
+            btns.attr("lyrpath", lyrpath);
             btns.attr("primaryartist", primaryartist);
             btns.attr("imgurl", imgurl);
             btns.text(artist + ":-" + song)
             $("#bholder").append(btns);
-            
+
         }
     });
 });
@@ -57,35 +57,53 @@ $(document).on("click", ".song-button", function () {
     lyrpath = $(this).attr("lyrpath");
     imgurl = $(this).attr("imgurl");
     primaryartist = $(this).attr("primaryartist");
-    $("#song-info").append("<h3>"+title+"</h3>")
-    var songtable=$("<table>");
+    $("#song-info").append("<h3>" + title + "</h3>")
+    var songtable = $("<table>");
     songtable.addClass("table");
-    songtable.append("<tr><td>Artist:</td><td>"+artist+"</td></tr>");
-    songtable.append("<tr><td>Primary artist:</td><td>"+primaryartist+"</td></tr>");
-    var showimage=$("<img>");
+    songtable.append("<tr><td>Artist:</td><td>" + artist + "</td></tr>");
+    songtable.append("<tr><td>Primary artist:</td><td>" + primaryartist + "</td></tr>");
+    var showimage = $("<img>");
     showimage.addClass("mx-auto");
     showimage.attr("src", imgurl);
-    showimage.css("width","90%");
+    showimage.css("width", "90%");
     $("#image-info").append(showimage);
     $("#song-info").append(songtable);
 
     wikiurl = "https://en.wikipedia.org/wiki/" + primaryartist;
     $("#lyricsholder").empty();
     $("#lyricsholder").text("Loading Lyrics...")
-    
+
     //wikiurl = "https://genius.com/The-doors-the-end-lyrics";
     $(".loader").attr("src", wikiurl);
-    lyricsurl = "https://cors-anywhere.herokuapp.com/https://genius.com/"+lyrpath;
+    lyricsurl = "https://cors-anywhere.herokuapp.com/https://genius.com/" + lyrpath;
     $.ajax({
         url: lyricsurl,
         methods: "GET"
-    }).then(function (response){
+    }).then(function (response) {
         var test = $(response);
         console.log(test.find(".lyrics").text());
         $("#lyricsholder").empty();
         $("#lyricsholder").append(test.find(".lyrics").text().trim())
     })
-    
+
+    const options = {
+        //q: encodeURIComponent("#search").val().replace(/%20/g, "+"),
+        q: title,
+        part: 'snippet',
+        type: 'video'
+    }
+    searchYoutube('AIzaSyC_ytVmeO68tuqQ3Vq_wj5nq1YG7C8Eh3U', options).then(function (result) {
+        // var youtube = "https://www.youtube.com/embed/" + result.items[0].id.videoId;
+        // console.log(youtube);
+        // youtest = 
+        // $("#load").attr("src", youtube);
+        for (i = 0; i < 5; i++) {
+            var youtube = "https://www.youtube.com/embed/" + result.items[i].id.videoId;
+            console.log(youtube);
+            $(`#load${i}`).attr("src", youtube);
+        }
+    });
+
     $("#song-name").val("");
     $("#limit").val("");
 })
