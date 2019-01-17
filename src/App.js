@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import HomePage from './Pages/HomePage'
 import MainPage from './Pages/MainPage'
-// import Search from "./Search/Search.js";
 
 const App = () => (
   <Router>

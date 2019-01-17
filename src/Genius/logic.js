@@ -69,13 +69,13 @@ $(document).on("click", ".song-button", function () {
     $("#image-info").append(showimage);
     $("#song-info").append(songtable);
 
-    wikiurl = "https://en.wikipedia.org/wiki/" + primaryartist;
+    var wikiurl = "https://en.wikipedia.org/wiki/" + primaryartist;
     $("#lyricsholder").empty();
     $("#lyricsholder").text("Loading Lyrics...")
     
     //wikiurl = "https://genius.com/The-doors-the-end-lyrics";
     $(".loader").attr("src", wikiurl);
-    lyricsurl = "https://cors-anywhere.herokuapp.com/https://genius.com/"+lyrpath;
+    var lyricsurl = "https://cors-anywhere.herokuapp.com/https://genius.com/"+lyrpath;
     $.ajax({
         url: lyricsurl,
         methods: "GET"
@@ -85,8 +85,5 @@ $(document).on("click", ".song-button", function () {
         $("#lyricsholder").empty();
         $("#lyricsholder").append(test.find(".lyrics").text().trim())
     })
-    
-    $("#song-name").val("");
-    $("#limit").val("");
 })
 
