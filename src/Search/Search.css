@@ -16,26 +16,3 @@
     margin: 0;
 }
 
-#searchContainer{
-    /* width: 0; */
-    display: flex;
-    flex:1;
-    visibility: hidden;
-    align-items: center;
-    justify-content: center;
-    animation: appear 4s ease-in 10s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes appear{
-    0%{
-        width: 80%;
-        /* visibility: visible; */
-        opacity: 0.01;
-    }
-    100%{
-        visibility: visible;
-        width: 80%;
-        opacity: 1;
-    }
-}

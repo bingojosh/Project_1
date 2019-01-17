@@ -2,9 +2,9 @@ import React from 'react';
 
 export const Lyrics = () => (
     <div className="lyricsBox card">
-        <div className="card-header">S O N G N A M E - A R T I S T</div>
+        <div className="card-header" id="songtitle">S O N G N A M E - A R T I S T</div>
         <div className="card-body">
-            <div className="card-text text-muted">
+            <div className="card-text text-muted" id="lyricsholder">
                 Shady, aftermath<br />
                 There she goes shaking that ass on the floor<br />
                 Bumpin' and grindin' that pole<br />
