@@ -1,7 +1,30 @@
 #left{
-    flex-basis: 65%
+    flex-basis: 65%;
+    min-width: 50%;
 }
 
 #right{
+    min-width: 30%;
     flex-basis: 35%;
+    margin-left: 10px;
 }
+
+.searchbar{
+    width: 80%;
+    margin-top: 30px;
+}
+
+.mainContent{
+    width: 100%;
+    min-height: 50vh;
+}
+
+.card.content-card{
+    width: 100%;
+    min-height: 90vh;
+}
+
+.body{
+    width:100%;
+}
+
